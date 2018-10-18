@@ -1,0 +1,17 @@
+{
+  "name": "customer-service",
+  "version": "1.0.0",
+  "description": "Customer Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "keywords": [
+    "jest"
+  ],
+  "author": "Dewei Xiang",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
