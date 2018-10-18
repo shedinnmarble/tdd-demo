@@ -5,7 +5,7 @@ function sum(a, b) {
 
 function divide(a, b){
   if(b === 0){
-    throw new Error(errorModel.divisior_is_zero);
+    throw new Error(errorModel.DivideByZeroException);
   }
   return a/b;
 }

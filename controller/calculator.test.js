@@ -8,7 +8,7 @@ describe("division(a, b)", () =>{
   test('should throw exception if b is 0', ()=>{
     expect(()=>{
       calculator.divide(1,0)
-    }).toThrowError(calculatorErrorModel.divisior_is_zero)
+    }).toThrowError(calculatorErrorModel.DivideByZeroException)
   });
   test('should return 4/2 = 2', ()=>{
     expect(calculator.divide(4,2)).toBe(2)
