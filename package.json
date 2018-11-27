@@ -4,7 +4,15 @@
   "description": "Customer Service",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest  --coverage",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/controller/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
   },
   "keywords": [
     "jest"
@@ -12,6 +20,10 @@
   "author": "Dewei Xiang",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "redis-mock": "^0.40.0"
+  },
+  "dependencies": {
+    "ioredis": "^4.2.0"
   }
 }
