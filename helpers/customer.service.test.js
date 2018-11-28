@@ -1,5 +1,6 @@
 var customerService = require('./customer.service');
 var customerDBHelper = require('./customer.helper.mock');
+var ErrorModel = require('../models/error.model');
 describe("Customer Test", () =>{
     describe("getCustomer() test", ()=>{
         beforeEach(() => {
@@ -16,5 +17,37 @@ describe("Customer Test", () =>{
             ).toBe(customerID)
         })
     })
+    describe('prefixCustomerID() test', () => {
+        beforeEach(() => {
+            customerService.customerDBHelper = customerDBHelper; 
+        });
+        afterEach(() =>{
+            customerService.customerDBHelper = null;            
+        }) 
+        it('should prefix not be null', () => {
+            expect(() =>{
+                customerService.prefixCustomerID(null, 1)
+            }).toThrow(ErrorModel.prefix_is_null)
+        });
+        it('should return prefix+customerid', () => {
+            const prefix = "dewei";
+            const customerID = 123;
+            const prefixedCustomerID = customerService.prefixCustomerID(prefix, customerID);
+            expect(prefixedCustomerID).toBe(prefix + customerID)
+        });
+        it('should return prefixed customerid length <= 15', () => {
+            const prefix = "dewei";
+            const customerID = 123;
+            const prefixedCustomerID = customerService.prefixCustomerID(prefix, customerID);
+            expect(prefixedCustomerID.length).toBeLessThan(15);
+        });
+        it('should throw Exception if prefixed customerid length > 15', () => {
+            const prefix = "dewei----";
+            const customerID = 123456789012;
+            expect(() =>{
+                customerService.prefixCustomerID(prefix, customerID)
+            }).toThrow(ErrorModel.prefixed_customerID_too_long)
+        });
+    });
     
 })
