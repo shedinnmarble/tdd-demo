@@ -1,3 +1,4 @@
+const ErrorModel = require('../models/error.model')
 class CustomerService{
     constructor(){
         this.customerDBHelper = null;
@@ -27,7 +28,14 @@ class CustomerService{
      * @param {*} customerID 
      */
     prefixCustomerID(prefix, customerID){
-        return null;
+        if(!prefix){
+            throw new Error(ErrorModel.prefix_is_null);
+        }
+        const prefixCustomerID = prefix + customerID;
+        if(prefixCustomerID.length > 15){
+            throw new Error(ErrorModel.prefixed_customerID_too_long)
+        }
+        return prefixCustomerID;
     }
 
     
