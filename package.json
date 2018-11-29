@@ -9,7 +9,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/controller/*.{js,jsx}",
+      "**/helpers/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/vendor/**"
     ]
