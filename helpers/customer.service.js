@@ -17,7 +17,9 @@ class CustomerService{
         return this.dbHelper.getCustomer(customerID);
     }
     
-    isCustomerActive(customer){
+    // refactor Note:
+    // use Async await
+    async isCustomerActive(customer){
         if(customer.status === CustomerStatus.Active){
             return true;
         }else{

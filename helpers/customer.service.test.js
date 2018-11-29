@@ -51,24 +51,26 @@ describe("Customer Test", () =>{
         });
     });
     describe('isCustomerActive() test', () => {
-        it('Should return true', () => {
+        it('Should return true', async () => {
             const activeCustomer = {
                 First: "Dewei",
                 Last: "Xiang",
                 status: CustomerStatus.Active
             }
+            const result = await customerService.isCustomerActive(activeCustomer);
             expect(
-                customerService.isCustomerActive(activeCustomer)
+               result
             ).toBe(true);
         });
-        it('Should return false', () => {
+        it('Should return false', async () => {
             const activeCustomer = {
                 First: "Dewei",
                 Last: "Xiang",
                 status: CustomerStatus.Disabled
             }
+            const result = await customerService.isCustomerActive(activeCustomer);
             expect(
-                customerService.isCustomerActive(activeCustomer)
+                result
             ).toBe(false);
         });
     });
