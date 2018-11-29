@@ -1,6 +1,7 @@
 var customerService = require('./customer.service');
 var customerDBHelper = require('./customer.helper.mock');
 var ErrorModel = require('../models/error.model');
+var CustomerStatus = require('../models/customer.status.model')
 describe("Customer Test", () =>{
     describe("getCustomer() test", ()=>{
         beforeEach(() => {
@@ -47,6 +48,28 @@ describe("Customer Test", () =>{
             expect(() =>{
                 customerService.prefixCustomerID(prefix, customerID)
             }).toThrow(ErrorModel.prefixed_customerID_too_long)
+        });
+    });
+    describe('isCustomerActive() test', () => {
+        it('Should return true', () => {
+            const activeCustomer = {
+                First: "Dewei",
+                Last: "Xiang",
+                status: CustomerStatus.Active
+            }
+            expect(
+                customerService.isCustomerActive(activeCustomer)
+            ).toBe(true);
+        });
+        it('Should return false', () => {
+            const activeCustomer = {
+                First: "Dewei",
+                Last: "Xiang",
+                status: CustomerStatus.Disabled
+            }
+            expect(
+                customerService.isCustomerActive(activeCustomer)
+            ).toBe(false);
         });
     });
     

@@ -1,4 +1,5 @@
-const ErrorModel = require('../models/error.model')
+const ErrorModel = require('../models/error.model');
+const CustomerStatus = require('../models/customer.status.model')
 class CustomerService{
     constructor(){
         this.customerDBHelper = null;
@@ -17,7 +18,11 @@ class CustomerService{
     }
     
     isCustomerActive(customer){
-        return null;
+        if(customer.status === CustomerStatus.Active){
+            return true;
+        }else{
+            return false;
+        }
     }
     /**
      * Requirement
