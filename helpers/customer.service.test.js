@@ -57,12 +57,18 @@ describe("Customer Test", () =>{
                 Last: "Xiang",
                 status: CustomerStatus.Active
             }
-            const result = await customerService.isCustomerActive(activeCustomer);
+            // const result =  customerService.isCustomerActive(activeCustomer).then(result =>{
+            //     expect(
+            //         result
+            //      ).toBe(true);
+            // })
+            const result =  await customerService.isCustomerActive(activeCustomer);
             expect(
-               result
+                result
             ).toBe(true);
+            
         });
-        it('Should return false', async () => {
+        it('Should return false',  async () => {
             const activeCustomer = {
                 First: "Dewei",
                 Last: "Xiang",
