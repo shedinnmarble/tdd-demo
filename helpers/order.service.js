@@ -15,12 +15,12 @@ function generateAnOrderID(){
  * @param {*} orderID 
  */
 function prefixOrderID(prefix, orderID){
-    if(!prefix){
-        throw new Error("Prefix can't be null")
+    if(!prefix || !orderID){
+        throw new Error("Wrong data!!!")
     }
-    if(!orderID){
-        throw new Error("OrderID can't be null");
-    }
+    // if(!orderID){
+    //     throw new Error("OrderID can't be null");
+    // }
     let prefixed = prefix + orderID;
     if(prefixed.length > 9){
         throw new Error("Prefixed order ID can't be long than 9")
